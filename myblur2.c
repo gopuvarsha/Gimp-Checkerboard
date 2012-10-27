@@ -160,19 +160,7 @@ blur (GimpDrawable *drawable)
           if(!isColored) continue;
 
           for (k = 0; k < channels; k++)
-            {
-              int sum = 0;
-              sum = row1[channels * MAX ((j - 1 - x1), 0) + k]           +
-                    row1[channels * (j - x1) + k]                        +
-                    row1[channels * MIN ((j + 1 - x1), x2 - x1 - 1) + k] +
-                    row2[channels * MAX ((j - 1 - x1), 0) + k]           +
-                    row2[channels * (j - x1) + k]                        +
-                    row2[channels * MIN ((j + 1 - x1), x2 - x1 - 1) + k] +
-                    row3[channels * MAX ((j - 1 - x1), 0) + k]           +
-                    row3[channels * (j - x1) + k]                        +
-                    row3[channels * MIN ((j + 1 - x1), x2 - x1 - 1) + k];
-              outrow[channels * (j - x1) + k] = 66;
-            }
+            outrow[channels * (j - x1) + k] = 66;
         }
 
       gimp_pixel_rgn_set_row (&rgn_out,
