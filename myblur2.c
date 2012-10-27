@@ -136,19 +136,6 @@ blur (GimpDrawable *drawable)
 
   for (i = y1; i < y2; i++)
     {
-      /* Get row i-1, i, i+1 */
-      gimp_pixel_rgn_get_row (&rgn_in,
-                              row1,
-                              x1, MAX (y1, i - 1),
-                              x2 - x1);
-      gimp_pixel_rgn_get_row (&rgn_in,
-                              row2,
-                              x1, i,
-                              x2 - x1);
-      gimp_pixel_rgn_get_row (&rgn_in,
-                              row3,
-                              x1, MIN (y2 - 1, i + 1),
-                              x2 - x1);
       gint colwid = (x2-x1)/8;
       gboolean isColored = FALSE;
       for (j = x1; j < x2; j++)
