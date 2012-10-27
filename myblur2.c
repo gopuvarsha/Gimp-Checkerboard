@@ -149,11 +149,16 @@ blur (GimpDrawable *drawable)
                               row3,
                               x1, MIN (y2 - 1, i + 1),
                               x2 - x1);
-
+      gint colwid = (x2-x1)/8;
+      gboolean isColored = FALSE;
       for (j = x1; j < x2; j++)
         {
           /* For each layer, compute the average of the nine
            * pixels */
+
+          if(j%colwid == 0) isColored = !isColored;
+          if(!isColored) continue;
+
           for (k = 0; k < channels; k++)
             {
               int sum = 0;
@@ -166,7 +171,7 @@ blur (GimpDrawable *drawable)
                     row3[channels * MAX ((j - 1 - x1), 0) + k]           +
                     row3[channels * (j - x1) + k]                        +
                     row3[channels * MIN ((j + 1 - x1), x2 - x1 - 1) + k];
-              outrow[channels * (j - x1) + k] = sum / 9;
+              outrow[channels * (j - x1) + k] = 66;
             }
         }
 
